@@ -39,11 +39,6 @@
         .align-center{
             text-align: center;
         }
-        @media only screen and (max-width: 1024px) {
-            .kt-wrapper{
-                margin-top: 0px!important;
-            }
-        }
     </style>
     <!--end::Fonts -->
 
@@ -102,7 +97,7 @@
 
 
 
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper" style="margin-top: -20px;">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
 
             <x-admin-header  :title="$title" />
@@ -112,7 +107,7 @@
                    {{$subHeader}}
 
                     <!-- begin:: Content -->
-                    <div class="kt-content  kt-grid__item kt-grid__item--fluid" style="margin-top:15px">
+                    <div class="kt-content  kt-grid__item kt-grid__item--fluid">
                     {{ $slot }}
                     </div>
 
