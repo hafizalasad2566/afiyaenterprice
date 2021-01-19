@@ -8,7 +8,7 @@
             </x-slot>
 
             <x-slot name="tbody" >
-                @foreach ($users as $user)
+                @forelse($users as $user)
                 <tr>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
@@ -17,12 +17,11 @@
                         <a href="#" class="dropdown-item" data-toggle="modal" wire:click="deleteAttempt({{$user->id}})" data-target="#delete_confirm_modal"><i class="fa fa-trash" ></i> Delete</a>
                     </x-admin.td-action>
                 </tr>
-                @endforeach
-                @if(count($users)==0)
-                 <tr>
-                     <td colspan="5" class="align-center">No records available</td>
-                 </tr>
-                 @endif
+                @empty
+                <tr>
+                    <td colspan="5" class="align-center">No records available</td>
+                </tr>
+                @endforelse
             </x-slot>
             <x-slot name="pagination" >
                   {{ $users->links() }}
