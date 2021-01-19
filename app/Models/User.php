@@ -18,17 +18,17 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    protected $guarded = [];
+    // protected $guarded = [];
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -56,9 +56,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    // protected $appends = [
-    //     'profile_photo_url',
-    // ];
+    protected $appends = [
+        'profile_photo_url',
+    ];
 
     public function setPasswordAttribute($password)
     {

@@ -17,11 +17,11 @@
                         <x-admin.input-error for="state.password" />
                     </x-admin.form-group>
 
-                    {{-- <x-admin.form-group>
+                    <x-admin.form-group>
                         <x-admin.lable value="Confirm Password" />
-                        <x-admin.input type="password" wire:model="password" placeholder="Reenter Password" autocomplete="off" class="{{ $errors->has('password') ? 'is-invalid' :'' }}"/>
+                        <x-admin.input type="password" wire:model.defer="state.password_confirmation" placeholder="Reenter Password" autocomplete="off" class="{{ $errors->has('password') ? 'is-invalid' :'' }}"/>
                         <x-admin.input-error for="password" />
-                    </x-admin.form-group> --}}
+                    </x-admin.form-group>
                      @endif
             </div>
             <br>

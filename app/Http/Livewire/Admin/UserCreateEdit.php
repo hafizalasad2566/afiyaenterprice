@@ -17,6 +17,10 @@ class UserCreateEdit extends Component
      * @var array
      */
     public $state = [];
+    protected $messages = [
+        'state.name.required' => 'The Namecannot be empty.',
+        'state.email.unique' => 'The email has already been taken.',
+    ];
     
     public function mount($user=null){
         if($user){
@@ -29,8 +33,8 @@ class UserCreateEdit extends Component
         return 
         [
             'state.name' => 'required',
-            'state.email' => 'required',
-            'state.password' => 'required'
+            'state.email' => 'required|unique:users,email',
+            'state.password' => 'required|min:6|confirmed'
         ];
     }
 
@@ -38,7 +42,7 @@ class UserCreateEdit extends Component
         return 
             [
                 'state.name' => 'required',
-                'state.email' => 'required',
+                'state.email' => 'required|unique:users,email,'.$this->user->id,
             ];
     }
     
