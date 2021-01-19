@@ -4,46 +4,54 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserCreateEdit extends Component
 {
-    public $user,$name, $email,$password;
     public $edit=false;
+    public $user;
+      /**
+     * The component's state.
+     *
+     * @var array
+     */
+    public $state = [];
     
     public function mount($user=null){
         if($user){
             $this->user=$user;
+            $this->state=$user->toArray();
             $this->edit=true;
-            $this->fill($this->user);
         }
     }
     public function validationRuleForSave(): array{
         return 
         [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'state.name' => 'required',
+            'state.email' => 'required',
+            'state.password' => 'required'
         ];
     }
 
     public function validationRuleForUpdate(): array{
         return 
             [
-                'name' => 'required',
-                'email' => 'required',
+                'state.name' => 'required',
+                'state.email' => 'required',
             ];
     }
     
     public function saveOrUpdate()
     {
          if($this->edit)
-             $validatedData = $this->validate($this->validationRuleForUpdate());
+             $this->validate($this->validationRuleForUpdate());
          else {
-            $validatedData = $this->validate($this->validationRuleForSave());
+            $this->validate($this->validationRuleForSave());
             $this->user=new User;
          }
 
-        $this->user->fill($validatedData)->save();
+        $this->user->fill($this->state)->save();
         $msgAction=$this->edit ? 'updated' : 'added';
         session()->flash('success', 'User was '.$msgAction.' successfully');
 

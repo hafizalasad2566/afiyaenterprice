@@ -39,6 +39,11 @@
         .align-center{
             text-align: center;
         }
+        @media only screen and (max-width: 1024px) {
+            .kt-wrapper{
+                margin-top: 0px!important;
+            }
+        }
     </style>
     <!--end::Fonts -->
 
