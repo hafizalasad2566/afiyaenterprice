@@ -1,10 +1,10 @@
 <x-admin-layout title="User list">
     <x-slot name="subHeader">
-            <x-admin.sub-header headerTitle="Dashboard">
+            <x-admin.sub-header headerTitle="Profile">
 				<x-admin.breadcrumbs>
-						<x-admin.breadcrumbs-item  value="Dashboard" />
+						<x-admin.breadcrumbs-item  value="Dashboard" href="{{ route('admin.dashboard') }}" />
 						<x-admin.breadcrumbs-separator />
-						<x-admin.breadcrumbs-item  value="List" />
+						<x-admin.breadcrumbs-item  value="Profile" href="{{ route('admin.profile') }}" />
 				</x-admin.breadcrumbs>
 				<x-slot name="toolbar">	
 				</x-slot>
