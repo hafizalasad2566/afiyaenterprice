@@ -4,8 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
-use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Validation\Rule;
 
 class UserCreateEdit extends Component
 {
@@ -32,17 +31,17 @@ class UserCreateEdit extends Component
     public function validationRuleForSave(): array{
         return 
         [
-            'state.name' => 'required',
-            'state.email' => 'required|unique:users,email',
-            'state.password' => 'required|min:6|confirmed'
+            'state.name' => ['required','max:255'],
+            'state.email' => ['required', 'email', 'max:255', Rule::unique('users','email')],
+            'state.password' => ['required','max:255','min:6','confirmed']
         ];
     }
 
     public function validationRuleForUpdate(): array{
         return 
             [
-                'state.name' => 'required',
-                'state.email' => 'required|unique:users,email,'.$this->user->id,
+                'state.name' => ['required','max:255'],
+                'state.email' => ['required', 'email', 'max:255', Rule::unique('users','email')->ignore($this->user->id)],
             ];
     }
     
@@ -56,6 +55,7 @@ class UserCreateEdit extends Component
          }
 
         $this->user->fill($this->state)->save();
+        
         $msgAction=$this->edit ? 'updated' : 'added';
         session()->flash('success', 'User was '.$msgAction.' successfully');
 
