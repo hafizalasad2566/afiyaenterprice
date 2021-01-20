@@ -1,9 +1,14 @@
 <x-admin.form-section submit="saveOrUpdate">
     <x-slot name="form">
                     <x-admin.form-group>
-                        <x-admin.lable value="Name" />
-                        <x-admin.input type="text" wire:model.defer="name" placeholder="Full Name"  class="{{ $errors->has('name') ? 'is-invalid' :'' }}" />
-                        <x-admin.input-error for="name" />
+                        <x-admin.lable value="First Name" />
+                        <x-admin.input type="text" wire:model.defer="first_name" placeholder="First Name"  class="{{ $errors->has('first_name') ? 'is-invalid' :'' }}" />
+                        <x-admin.input-error for="first_name" />
+                    </x-admin.form-group>
+                    <x-admin.form-group>
+                        <x-admin.lable value="Last Name" />
+                        <x-admin.input type="text" wire:model.defer="last_name" placeholder="Last Name"  class="{{ $errors->has('last_name') ? 'is-invalid' :'' }}" />
+                        <x-admin.input-error for="last_name" />
                     </x-admin.form-group>
                     <x-admin.form-group>
                         <x-admin.lable value="Email" />

@@ -41,11 +41,11 @@
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
             <div class="kt-header__topbar-user">
                 <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-                <span class="kt-header__topbar-username kt-hidden-mobile">{{ucfirst(Auth::user()->name)}}</span>
+                <span class="kt-header__topbar-username kt-hidden-mobile">{{ucfirst(Auth::user()->full_name)}}</span>
                 <img class="kt-hidden" alt="Pic" src="{{asset('admin_assets/media/users/300_25.jpg')}}" />
 
                 <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{substr(ucfirst(Auth::user()->name), 0, 1)}}</span>
+                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">{{substr(ucfirst(Auth::user()->first_name), 0, 1)}}</span>
             </div>
         </div>
         <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
@@ -56,10 +56,10 @@
                     <img class="kt-hidden" alt="Pic" src="{{asset('admin_assets/media/users/300_25.jpg')}}" />
 
                     <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                    <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{substr(ucfirst(Auth::user()->name), 0, 1)}}</span>
+                    <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">{{substr(ucfirst(Auth::user()->first_name), 0, 1)}}</span>
                 </div>
                 <div class="kt-user-card__name">
-                {{ucfirst(Auth::user()->name)}}
+                {{ucfirst(Auth::user()->full_name)}}
                 </div>
                 <!-- <div class="kt-user-card__badge">
                     <span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>

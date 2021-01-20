@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class UserCreateEdit extends Component
 {
-    public $name, $email, $password,$password_confirmation,$user;
+    public $first_name,$last_name, $email, $password,$password_confirmation,$user;
     public $isEdit=false;
 
     public function mount($user = null)
@@ -25,7 +25,8 @@ class UserCreateEdit extends Component
     {
         return
             [
-                'name' => ['required', 'max:255'],
+                'first_name' => ['required', 'max:255'],
+                'last_name' => ['required', 'max:255'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')],
                 'password' => ['required', 'max:255', 'min:6', 'confirmed'],
                 'password_confirmation' => ['required', 'max:255', 'min:6'],
@@ -34,8 +35,8 @@ class UserCreateEdit extends Component
     public function validationRuleForUpdate(): array
     {
         return
-            [
-                'name' => ['required', 'max:255'],
+            [   'first_name' => ['required', 'max:255'],
+                'last_name' => ['required', 'max:255'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
             ];
     }
@@ -43,6 +44,7 @@ class UserCreateEdit extends Component
     public function saveOrUpdate()
     {
         $this->user->fill($this->validate($this->isEdit ? $this->validationRuleForUpdate() : $this->validationRuleForSave()))->save();
+        $this->user->assignRole('CLIENT');
         $msgAction = $this->user ? 'updated' : 'added';
         session()->flash('success', 'User was ' . $msgAction . ' successfully');
 

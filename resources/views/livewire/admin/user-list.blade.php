@@ -4,7 +4,7 @@
             </x-slot>
             <x-slot name="thead" >
                 <tr>
-                    <th style="width: 30%;">Name <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('name')"></i></th>
+                    <th style="width: 30%;">Name <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('first_name')"></i></th>
                     <th>Email <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('email')"></i></th>
                     <th class="align-center" style="width: 10%;">Action</th>
                 </tr>
@@ -13,7 +13,7 @@
             <x-slot name="tbody" >
                 @forelse($users as $user)
                 <tr>
-                    <td>{{$user->name}}</td>
+                    <td>{{$user->full_name}}</td>
                     <td>{{$user->email}}</td>
                     <x-admin.td-action>
                         <a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}" ><i class="la la-edit"></i> Edit</a>
