@@ -5,12 +5,16 @@ namespace App\Http\Livewire\Admin;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Http\Livewire\Traits\WithSorting;
 
 class UserList extends Component
 {
     use WithPagination;
+    use WithSorting;
+
     protected $paginationTheme = 'bootstrap';
 
+    public $search;
     public $deleteConfirmId;
 
     protected $listeners = ['deleteConfirm' => 'deleteConfirm'];
@@ -19,7 +23,9 @@ class UserList extends Component
     public function render()
     {
         return view('livewire.admin.user-list',[
-            'users' => User::orderBy('id', 'DESC')->paginate(8)
+            'users' => User::where('name', 'like', '%'.$this->search.'%')
+            ->orWhere('email', 'like', '%'.$this->search.'%')
+            ->orderBy($this->sortBy, $this->sortDirection)->paginate(5)
         ]);
     }
     public function deleteConfirm(){

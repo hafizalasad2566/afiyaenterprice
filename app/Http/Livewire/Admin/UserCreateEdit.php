@@ -8,56 +8,43 @@ use Illuminate\Validation\Rule;
 
 class UserCreateEdit extends Component
 {
-    public $edit=false;
-    public $user;
-      /**
-     * The component's state.
-     *
-     * @var array
-     */
-    public $state = [];
-    protected $messages = [
-        'state.name.required' => 'The Namecannot be empty.',
-        'state.email.unique' => 'The email has already been taken.',
-    ];
-    
-    public function mount($user=null){
-        if($user){
-            $this->user=$user;
-            $this->state=$user->toArray();
-            $this->edit=true;
-        }
-    }
-    public function validationRuleForSave(): array{
-        return 
-        [
-            'state.name' => ['required','max:255'],
-            'state.email' => ['required', 'email', 'max:255', Rule::unique('users','email')],
-            'state.password' => ['required','max:255','min:6','confirmed']
-        ];
-    }
+    public $name, $email, $password,$password_confirmation,$user;
+    public $isEdit=false;
 
-    public function validationRuleForUpdate(): array{
-        return 
+    public function mount($user = null)
+    {
+        if ($user) {
+            $this->user = $user;
+            $this->fill($this->user);
+            $this->isEdit=true;
+        }
+        else
+            $this->user=new User;
+    }
+    public function validationRuleForSave(): array
+    {
+        return
             [
-                'state.name' => ['required','max:255'],
-                'state.email' => ['required', 'email', 'max:255', Rule::unique('users','email')->ignore($this->user->id)],
+                'name' => ['required', 'max:255'],
+                'email' => ['required', 'email', 'max:255', Rule::unique('users')],
+                'password' => ['required', 'max:255', 'min:6', 'confirmed'],
+                'password_confirmation' => ['required', 'max:255', 'min:6'],
             ];
     }
-    
+    public function validationRuleForUpdate(): array
+    {
+        return
+            [
+                'name' => ['required', 'max:255'],
+                'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
+            ];
+    }
+
     public function saveOrUpdate()
     {
-         if($this->edit)
-             $this->validate($this->validationRuleForUpdate());
-         else {
-            $this->validate($this->validationRuleForSave());
-            $this->user=new User;
-         }
-
-        $this->user->fill($this->state)->save();
-        
-        $msgAction=$this->edit ? 'updated' : 'added';
-        session()->flash('success', 'User was '.$msgAction.' successfully');
+        $this->user->fill($this->validate($this->isEdit ? $this->validationRuleForUpdate() : $this->validationRuleForSave()))->save();
+        $msgAction = $this->user ? 'updated' : 'added';
+        session()->flash('success', 'User was ' . $msgAction . ' successfully');
 
         return redirect()->route('users.index');
     }

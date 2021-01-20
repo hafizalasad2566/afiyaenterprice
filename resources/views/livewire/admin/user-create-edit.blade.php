@@ -2,25 +2,25 @@
     <x-slot name="form">
                     <x-admin.form-group>
                         <x-admin.lable value="Name" />
-                        <x-admin.input type="text" wire:model.defer="state.name" placeholder="Full Name"  class="{{ $errors->has('state.name') ? 'is-invalid' :'' }}" />
-                        <x-admin.input-error for="state.name" />
+                        <x-admin.input type="text" wire:model.defer="name" placeholder="Full Name"  class="{{ $errors->has('name') ? 'is-invalid' :'' }}" />
+                        <x-admin.input-error for="name" />
                     </x-admin.form-group>
                     <x-admin.form-group>
                         <x-admin.lable value="Email" />
-                        <x-admin.input type="text" wire:model.defer="state.email" placeholder="Email" autocomplete="off" class="{{ $errors->has('state.email') ? 'is-invalid' :'' }}"/>
-                        <x-admin.input-error for="state.email" />
+                        <x-admin.input type="text" wire:model.defer="email" placeholder="Email" autocomplete="off" class="{{ $errors->has('email') ? 'is-invalid' :'' }}"/>
+                        <x-admin.input-error for="email" />
                     </x-admin.form-group>
-                    @if(!$edit)
+                    @if(!$isEdit)
                     <x-admin.form-group>
                         <x-admin.lable value="Password" />
-                        <x-admin.input type="password" wire:model.defer="state.password" placeholder="Password" autocomplete="off" class="{{ $errors->has('state.password') ? 'is-invalid' :'' }}"/>
-                        <x-admin.input-error for="state.password" />
+                        <x-admin.input type="password" wire:model.defer="password" placeholder="Password" autocomplete="off" class="{{ $errors->has('password') ? 'is-invalid' :'' }}"/>
+                        <x-admin.input-error for="password" />
                     </x-admin.form-group>
 
                     <x-admin.form-group>
                         <x-admin.lable value="Confirm Password" />
-                        <x-admin.input type="password" wire:model.defer="state.password_confirmation" placeholder="Reenter Password" autocomplete="off" class="{{ $errors->has('password') ? 'is-invalid' :'' }}"/>
-                        <x-admin.input-error for="password" />
+                        <x-admin.input type="password" wire:model.defer="password_confirmation" placeholder="Reenter Password" autocomplete="off" class="{{ $errors->has('password_confirmation') ? 'is-invalid' :'' }}"/>
+                        <x-admin.input-error for="password_confirmation" />
                     </x-admin.form-group>
                      @endif
             </div>

@@ -1,8 +1,11 @@
 <x-admin.table >
+            <x-slot name="search" >
+                <x-admin.input type="text" class="form-control" wire:model.debounce.500ms="search" placeholder="Search..." id="generalSearch"/>
+            </x-slot>
             <x-slot name="thead" >
                 <tr>
-                    <th style="width: 30%;">Name</th>
-                    <th>Email</th>
+                    <th style="width: 30%;">Name <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('name')"></i></th>
+                    <th>Email <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('email')"></i></th>
                     <th class="align-center" style="width: 10%;">Action</th>
                 </tr>
             </x-slot>
