@@ -2,14 +2,17 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Livewire\Traits\AlertMessage;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
 class UserCreateEdit extends Component
 {
-    public $first_name,$last_name, $email, $password,$password_confirmation,$user;
+    use AlertMessage;
+    public $first_name,$last_name, $email, $password,$active=true,$password_confirmation,$user;
     public $isEdit=false;
+    public $statusList=[];
 
     public function mount($user = null)
     {
@@ -20,6 +23,11 @@ class UserCreateEdit extends Component
         }
         else
             $this->user=new User;
+        
+        $this->statusList=[
+            ['value'=>1, 'text'=> "Active"],
+            ['value'=>0, 'text'=> "Inactive"]
+        ];
     }
     public function validationRuleForSave(): array
     {
@@ -44,9 +52,10 @@ class UserCreateEdit extends Component
     public function saveOrUpdate()
     {
         $this->user->fill($this->validate($this->isEdit ? $this->validationRuleForUpdate() : $this->validationRuleForSave()))->save();
-        $this->user->assignRole('CLIENT');
-        $msgAction = $this->user ? 'updated' : 'added';
-        session()->flash('success', 'User was ' . $msgAction . ' successfully');
+        if(!$this->isEdit)
+            $this->user->assignRole('CLIENT');
+        $msgAction = 'User was '. ($this->isEdit ? 'updated' : 'added') . ' successfully';
+        $this->showToastr("success",$msgAction);
 
         return redirect()->route('users.index');
     }

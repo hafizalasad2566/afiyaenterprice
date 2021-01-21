@@ -17,7 +17,7 @@
                     <td>{{$user->email}}</td>
                     <x-admin.td-action>
                         <a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}" ><i class="la la-edit"></i> Edit</a>
-                        <a href="#" class="dropdown-item" data-toggle="modal" wire:click="deleteAttempt({{$user->id}})" data-target="#delete_confirm_modal"><i class="fa fa-trash" ></i> Delete</a>
+                        <button href="#" class="dropdown-item" wire:click="deleteAttempt({{ $user->id }})"><i class="fa fa-trash" ></i> Delete</button>
                     </x-admin.td-action>
                 </tr>
                 @empty

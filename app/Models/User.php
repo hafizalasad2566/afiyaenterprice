@@ -39,6 +39,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'active'
     ];
 
     /**
@@ -60,6 +61,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        // 'active'=>'boolean',
     ];
 
     public function setPasswordAttribute($password)

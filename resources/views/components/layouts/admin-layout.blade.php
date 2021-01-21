@@ -52,12 +52,12 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="{{asset('admin_assets/vendors/general/animate.css/animate.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin_assets/vendors/general/toastr/build/toastr.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin_assets/vendors/general/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin_assets/vendors/general/socicon/css/socicon.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin_assets/vendors/custom/vendors/line-awesome/css/line-awesome.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin_assets/vendors/custom/vendors/flaticon/flaticon.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin_assets/vendors/custom/vendors/flaticon2/flaticon.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin_assets/vendors/custom/vendors/fontawesome5/css/all.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css" />
     <!--end:: Global Optional Vendors -->
 
     <!--begin::Global Theme Styles(used by all pages) -->
@@ -116,7 +116,7 @@
 
             <x-admin-footer/>
             
-            </div>
+                   </div>
         </div>
     </div>
 
@@ -217,7 +217,7 @@
     <!--begin::Global App Bundle(used by all pages) -->
     <script src="{{asset('admin_assets/app/bundle/app.bundle.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('admin_assets/app/custom/general/components/extended/toastr.js')}}" type="text/javascript"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript">
 	
     toastr.options = {
@@ -269,17 +269,8 @@
                 $('#delete_confirm_modal').modal('show');
 		});
 
-        window.addEventListener('exist-warning', event  => {
-                    Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: "You can't not delete this effect as it contains few strain options in it." 
-		    });
-         });
-
-
+        
         window.addEventListener('toastr', event  => {
-                console.info("event",event);
 				alertMsg(event.detail.msg,event.detail.type);
 		});
 
@@ -302,7 +293,47 @@
 		
 
     </script>
-    
+    <script>
+        const SwalModal = (icon, title, html) => {
+            Swal.fire({
+                icon,
+                title,
+                html
+            })
+        }
+
+        const SwalConfirm = (icon, title, html, confirmButtonText, method, params, callback) => {
+            Swal.fire({
+                icon,
+                title,
+                html,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText,
+                reverseButtons: true,
+            }).then(result => {
+                if (result.value) {
+                    return livewire.emit(method, params)
+                }
+
+                if (callback) {
+                    return livewire.emit(callback)
+                }
+            })
+        }
+
+        document.addEventListener('DOMContentLoaded', () => { 
+            this.livewire.on('swal:modal', data => {
+                SwalModal(data.type, data.title, data.text)
+            })
+
+            this.livewire.on('swal:confirm', data => {
+                SwalConfirm(data.type, data.title, data.text, data.confirmText, data.method, data.params, data.callback)
+            })
+
+        })
+    </script>
     <!--end::Global App Bundle -->
 </body>
 
