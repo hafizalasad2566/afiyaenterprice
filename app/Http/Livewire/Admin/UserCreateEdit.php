@@ -38,6 +38,7 @@ class UserCreateEdit extends Component
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')],
                 'password' => ['required', 'max:255', 'min:6', 'confirmed'],
                 'password_confirmation' => ['required', 'max:255', 'min:6'],
+                'active'=>['required']
             ];
     }
     public function validationRuleForUpdate(): array
@@ -45,6 +46,7 @@ class UserCreateEdit extends Component
         return
             [   'first_name' => ['required', 'max:255'],
                 'last_name' => ['required', 'max:255'],
+                'active'=>['required'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
             ];
     }

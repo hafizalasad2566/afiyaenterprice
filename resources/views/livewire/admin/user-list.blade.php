@@ -6,6 +6,7 @@
                 <tr>
                     <th style="width: 30%;">Name <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('first_name')"></i></th>
                     <th>Email <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('email')"></i></th>
+                    <th class="align-center" style="width: 10%;">Status</th>
                     <th class="align-center" style="width: 10%;">Action</th>
                 </tr>
             </x-slot>
@@ -15,6 +16,7 @@
                 <tr>
                     <td>{{$user->full_name}}</td>
                     <td>{{$user->email}}</td>
+                    <td class="align-center"><span class="kt-badge kt-badge--{{$user->active==1 ? 'success' : 'warning'}} kt-badge--inline cursor-pointer" wire:click="changeStatusConfirm({{$user->id}})">{{$user->active==1 ? 'Active' : 'Inactive'}}</span></td>
                     <x-admin.td-action>
                         <a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}" ><i class="la la-edit"></i> Edit</a>
                         <button href="#" class="dropdown-item" wire:click="deleteAttempt({{ $user->id }})"><i class="fa fa-trash" ></i> Delete</button>

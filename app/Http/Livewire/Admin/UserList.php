@@ -17,7 +17,7 @@ class UserList extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $search;
-    protected $listeners = ['deleteConfirm'];
+    protected $listeners = ['deleteConfirm','changeStatus'];
 
 
     public function render()
@@ -37,5 +37,13 @@ class UserList extends Component
     public function deleteAttempt($id){
         $this->showConfirmation("warning",'Are you sure?',"You won't be able to recover this user!",'Yes, delete!','deleteConfirm',['id'=>$id]);//($type,$title,$text,$confirmText,$method)
     }
-  
+
+    public function changeStatusConfirm($id){
+        $this->showConfirmation("warning",'Are you sure?',"Do you want to change this status?",'Yes, Change!','changeStatus',['id'=>$id]);//($type,$title,$text,$confirmText,$method)
+    }
+
+    public function changeStatus(User $user){
+        $user->fill(['active'=>($user->active== 1) ? 0 : 1])->save();
+        $this->showModal('success','Success','User status has been changed successfully');
+    }
 }

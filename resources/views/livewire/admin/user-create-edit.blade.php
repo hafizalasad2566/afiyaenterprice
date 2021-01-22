@@ -32,7 +32,7 @@
                         <x-admin.lable value="Status" />
                         <x-admin.dropdown  wire:model.defer="active" placeHolderText="Please select one" autocomplete="off" class="{{ $errors->has('active') ? 'is-invalid' :'' }}">
                                 @foreach ($statusList as $status)
-                                    <x-admin.dropdown-item :selected="$status['value']==$active"  :value="$status['value']" :text="$status['text']"/>                          
+                                    <x-admin.dropdown-item  :value="$status['value']" :text="$status['text']"/>                          
                                 @endforeach
                         </x-admin.dropdown>
                         <x-admin.input-error for="password_confirmation" />
