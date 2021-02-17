@@ -23,11 +23,16 @@ class UserList extends Component
     public function render()
     {
         return view('livewire.admin.user-list',[
-            'users' => User::role('CLIENT')
-            ->Where('first_name', 'like', '%'.$this->search.'%')
+            'users' => User::WhereRaw(
+                "concat(first_name,' ', last_name) like '%" . $this->search . "%' "
+            )
+            ->OrWhere('first_name', 'like', '%'.$this->search.'%')
             ->orWhere('last_name', 'like', '%'.$this->search.'%')
             ->orWhere('email', 'like', '%'.$this->search.'%')
-            ->orderBy($this->sortBy, $this->sortDirection)->paginate(5)
+            ->orWhere('phone', 'like', '%'.$this->search.'%')
+            ->orderBy($this->sortBy, $this->sortDirection)
+            ->role('CLIENT')
+            ->paginate(5)
         ]);
     }
     public function deleteConfirm($id){

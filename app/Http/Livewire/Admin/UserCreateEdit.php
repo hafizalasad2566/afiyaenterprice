@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 class UserCreateEdit extends Component
 {
     use AlertMessage;
-    public $first_name,$last_name, $email, $password,$active=true,$password_confirmation,$user;
+    public $first_name,$last_name, $email, $password,$phone,$active=true,$password_confirmation,$user;
     public $isEdit=false;
     public $statusList=[];
 
@@ -36,6 +36,7 @@ class UserCreateEdit extends Component
                 'first_name' => ['required', 'max:255'],
                 'last_name' => ['required', 'max:255'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')],
+                'phone' => ['required', Rule::unique('users')],
                 'password' => ['required', 'max:255', 'min:6', 'confirmed'],
                 'password_confirmation' => ['required', 'max:255', 'min:6'],
                 'active'=>['required']
@@ -48,6 +49,7 @@ class UserCreateEdit extends Component
                 'last_name' => ['required', 'max:255'],
                 'active'=>['required'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
+                'phone' => ['required', Rule::unique('users')->ignore($this->user->id)]
             ];
     }
 

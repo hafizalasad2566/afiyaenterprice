@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AdminDashboard extends Controller
 {
     public function getDashboard(){
-        $count['userCount'] = User::count();
+        $count['userCount'] = User::role('CLIENT')->count();
         return view('admin.dashboard',compact('count'));
     }
     public function userCreateShow(){

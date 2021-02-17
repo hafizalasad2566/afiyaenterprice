@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\TaskController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// user controller routes
+Route::post("register", [UserController::class, 'register']);
+Route::post("login", [UserController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// sanctum auth middleware routes
+Route::middleware('auth:api')->group(function() {
+    Route::get("user", [UserController::class, "user"]);
+    Route::resource('tasks', TaskController::class);    //patch/put   =>  x-www-form-urlencode
 });

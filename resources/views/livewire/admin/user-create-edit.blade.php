@@ -15,6 +15,11 @@
                         <x-admin.input type="text" wire:model.defer="email" placeholder="Email" autocomplete="off" class="{{ $errors->has('email') ? 'is-invalid' :'' }}"/>
                         <x-admin.input-error for="email" />
                     </x-admin.form-group>
+                    <x-admin.form-group>
+                        <x-admin.lable value="Phone" required />
+                        <x-admin.input type="text" wire:model.defer="phone" placeholder="Phone" autocomplete="off" class="{{ $errors->has('phone') ? 'is-invalid' :'' }}"/>
+                        <x-admin.input-error for="phone" />
+                    </x-admin.form-group>
                     @if(!$isEdit)
                     <x-admin.form-group>
                         <x-admin.lable value="Password"  required />

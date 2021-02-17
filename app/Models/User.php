@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'full_name','role_name','profile_photo_url',
+        'full_name','role_name'//,'profile_photo_url',
     ];
     /**
      * The attributes that are mass assignable.
@@ -38,6 +38,7 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
+        'phone',
         'password',
         'active'
     ];
@@ -78,6 +79,11 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function task()
+    {
+         return $this->hasMany(Task::class);
     }
 
 
