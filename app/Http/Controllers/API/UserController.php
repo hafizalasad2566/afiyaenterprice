@@ -8,9 +8,48 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+/**
+ * @group  User Authentication
+ *
+ * APIs for managing basic auth functionality
+ */
 class UserController extends Controller
 {
-    // User Register
+/** 
+ * @bodyParam  first_name string required  Example: John
+ * @bodyParam  last_name string required  Example: Doe
+ * @bodyParam  email string required  Example: John@gmail.com
+ * @bodyParam  phone string required  Example: 1122334455
+ * @response  {
+    "status": true,
+    "message": "Success! registration completed",
+    "data": {
+        "first_name": "john",
+        "last_name": "doe",
+        "email": "john@gmail.com",
+        "phone": "1122334455",
+        "updated_at": "2021-02-18T12:14:01.000000Z",
+        "created_at": "2021-02-18T12:14:01.000000Z",
+        "id": 56,
+        "full_name": "john doe",
+        "role_name": "CLIENT",
+        "roles": [
+            {
+                "id": 2,
+                "name": "CLIENT",
+                "guard_name": "web",
+                "created_at": "2021-02-17T06:58:17.000000Z",
+                "updated_at": "2021-02-17T06:58:17.000000Z",
+                "pivot": {
+                    "model_id": 56,
+                    "role_id": 2,
+                    "model_type": "App\\Models\\User"
+                }
+            }
+        ]
+    }
+}
+ */
     public function register(Request $request) {
         $validator  =   Validator::make($request->all(), [
             "first_name"  =>  "required",
@@ -36,8 +75,29 @@ class UserController extends Controller
             return response()->json(["status" => false, "message" => "Registration failed!"]);
         }       
     }
-
-    // User login
+/** 
+ * @bodyParam email string required Example: user@user.com
+ * @bodyParam password string required Example: 12345678
+ * @response  {
+    "status": true,
+    "token": "6|Imv8VDsE27b1sRclxv91emCSIbLpxLmfvK3wFsAa",
+    "data": {
+        "id": 55,
+        "first_name": "Abhik",
+        "last_name": "paul",
+        "email": "abhik421@gmail.com",
+        "phone": "6655443321",
+        "email_verified_at": null,
+        "current_team_id": null,
+        "profile_photo_path": null,
+        "active": 0,
+        "created_at": "2021-02-17T15:13:27.000000Z",
+        "updated_at": "2021-02-17T15:13:27.000000Z",
+        "full_name": "Abhik paul",
+        "role_name": "CLIENT"
+    }
+}
+ */
     public function login(Request $request) {
 
         $validator = Validator::make($request->all(), [
@@ -65,9 +125,30 @@ class UserController extends Controller
             return response()->json(["status" => false, "message" => "Whoops! invalid password"]);
         }
     }
-
-    
-    // User Detail
+/** 
+ * @authenticated
+ * @response  {
+    "status": true,
+    "data": {
+        "id": 55,
+        "first_name": "Abhik",
+        "last_name": "paul",
+        "email": "abhik421@gmail.com",
+        "phone": "6655443321",
+        "email_verified_at": null,
+        "current_team_id": null,
+        "profile_photo_path": null,
+        "active": 0,
+        "created_at": "2021-02-17T15:13:27.000000Z",
+        "updated_at": "2021-02-17T15:13:27.000000Z",
+        "full_name": "Abhik paul",
+        "role_name": "CLIENT"
+    }
+}
+ * @response  401 {
+ *   "message": "Unauthenticated."
+*}
+ */
     public function user() {
         $user= Auth::user();
         if(!is_null($user)) { 
