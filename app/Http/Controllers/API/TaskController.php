@@ -245,7 +245,7 @@ class TaskController extends Controller
             return response()->json(["status" => false, "validation_errors" => $validator->errors()]);
         }
         // update post
-        $update=$task->update($request->all());
+        $task->update($request->all());
         return response()->json(["status" => true, "message" => "Success! task updated", "data" => $task]);
     }
 /** 
