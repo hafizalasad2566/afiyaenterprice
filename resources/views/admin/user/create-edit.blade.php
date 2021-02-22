@@ -6,7 +6,7 @@
 						<x-admin.breadcrumbs-separator />
 						<x-admin.breadcrumbs-item href="{{ route('users.index') }}" value="User List" />
 						<x-admin.breadcrumbs-separator />
-						<x-admin.breadcrumbs-item  value="User List" />
+						<x-admin.breadcrumbs-item  value="{{ $user ? 'Edit' : 'Add' }} User" />
 
 				</x-admin.breadcrumbs>
 				<x-slot name="toolbar">	

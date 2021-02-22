@@ -1,4 +1,4 @@
-<x-admin-layout title="User list">
+<x-admin-layout title="Profile Management">
     <x-slot name="subHeader">
             <x-admin.sub-header headerTitle="Profile">
 				<x-admin.breadcrumbs>
