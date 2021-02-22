@@ -234,17 +234,13 @@ class TaskController extends Controller
  */
     public function update(Request $request, Task $task)
     {
-        $input          =           $request->all();
-        $user           =           Auth::user();
-        // validation
         $validator      =       Validator::make($request->all(), [
             "title"           =>      "required",
             "description"     =>      "required",
         ]);
-        if($validator->fails()) {
+        if($validator->fails()) 
             return response()->json(["status" => false, "validation_errors" => $validator->errors()]);
-        }
-        // update post
+
         $task->update($request->all());
         return response()->json(["status" => true, "message" => "Success! task updated", "data" => $task]);
     }
