@@ -19,6 +19,10 @@ class UserList extends Component
     public $search;
     protected $listeners = ['deleteConfirm','changeStatus'];
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
