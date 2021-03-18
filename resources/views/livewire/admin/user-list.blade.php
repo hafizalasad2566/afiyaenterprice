@@ -16,8 +16,8 @@
                     <th  tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 196.25px;" aria-sort="ascending" aria-label="Agent: activate to sort column descending">Name <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('first_name')"></i></th>
                     <th  tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 211.25px;" aria-label="Company Email: activate to sort column ascending">Email <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('email')"></i></th>
                     <th  tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 115.25px;" aria-label="Company Agent: activate to sort column ascending">Phone <i class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('phone')"></i></th>
-                    <th  tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 47.25px;" aria-label="Status: activate to sort column ascending">Status</th>
-                    <th  rowspan="1" colspan="1" style="width: 45.5px;" aria-label="Actions">Actions</th>
+                    <th class="align-center" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 47.25px;" aria-label="Status: activate to sort column ascending">Status</th>
+                    <th class="align-center" rowspan="1" colspan="1" style="width: 40.5px;" aria-label="Actions">Actions</th>
                 </tr>
             </x-slot>
 
@@ -36,7 +36,7 @@
                     </div></td>
                     <td><a class="kt-link" href="mailto:adingate15@furl.net">{{$user->email}}</a></td>
                     <td>{{$user->phone}}</td>
-                    <td><span class="kt-badge  kt-badge--{{$user->active==1 ? 'success' : 'warning'}} kt-badge--inline kt-badge--pill cursor-pointer" wire:click="changeStatusConfirm({{$user->id}})">{{$user->active==1 ? 'success' : 'warning'}}</span></td>
+                    <td class="align-center"><span class="kt-badge  kt-badge--{{$user->active==1 ? 'success' : 'warning'}} kt-badge--inline kt-badge--pill cursor-pointer" wire:click="changeStatusConfirm({{$user->id}})">{{$user->active==1 ? 'success' : 'warning'}}</span></td>
                     <x-admin.td-action>
                         <a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}" ><i class="la la-edit"></i> Edit</a>
                         <button href="#" class="dropdown-item" wire:click="deleteAttempt({{ $user->id }})"><i class="fa fa-trash" ></i> Delete</button>
