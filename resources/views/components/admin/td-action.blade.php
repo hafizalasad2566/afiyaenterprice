@@ -1,4 +1,4 @@
-<td class="align-center">
+    <td nowrap="">
     <span class="dropdown">
     <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
     <i class="la la-ellipsis-h"></i>
@@ -7,4 +7,4 @@
         {{ $slot }}
     </div>
     </span>
- </td>
+    </a></td>
