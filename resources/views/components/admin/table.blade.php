@@ -1,5 +1,4 @@
-
-@props(['search'=>null])
+@props(['search' => null])
 <div class="kt-portlet kt-portlet--mobile">
     <div class="kt-portlet__body">
         <div id="kt_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -19,36 +18,38 @@
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div id="kt_table_1_filter" class="dataTables_filter">
-                        <label>Search:
+                        {{-- <label>Search:
                             {{ $search }}
-                        </label>
+                        </label> --}}
                     </div>
                 </div>
             </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="kt_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 1115px;">
-            <thead>
-                {{ $thead }}
-            </thead>
-            <tbody>
-                {{ $tbody }}
-                </tbody>
-        </table>
-    </div>
-</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-5">
-            <div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">
-                {{ $showingEntries }}
-            </div>
-    </div>
-    <div class="col-sm-12 col-md-7">
-        <div class="dataTables_paginate paging_simple_numbers float-right" id="kt_table_1_paginate">
-            {{ $pagination }}
+            <div class="row">
+                <div class="col-sm-12">
+                    <table
+                        class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline"
+                        id="kt_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 1115px;">
+                        <thead>
+                            {{ $thead }}
+                        </thead>
+                        <tbody>
+                            {{ $tbody }}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">
+                    {{ $showingEntries }}
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7">
+                <div class="dataTables_paginate paging_simple_numbers float-right" id="kt_table_1_paginate">
+                    {{ $pagination }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
