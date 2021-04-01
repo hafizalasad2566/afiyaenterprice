@@ -1,1 +1,1 @@
-<textarea  wire:model="description" {!! $attributes->merge(['class' => 'form-control']) !!}></textarea>
+<textarea {!! $attributes->merge(['class' => 'form-control border-gray-200']) !!}></textarea>
