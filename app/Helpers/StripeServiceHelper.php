@@ -1,15 +1,16 @@
 <?php
+
 namespace App\Helpers;
 
 class StripeServiceHelper
 {
     private $apiKey;
     private $stripeService;
-    public $currencyMultiplyingFactor=100;
+    public $currencyMultiplyingFactor = 100;
 
     public function __construct()
     {
-        $this->apiKey = env('STRIPE_SECRET');
+        $this->apiKey = config('services.stripe.secret');
         $this->stripeService = new \Stripe\Stripe();
         $this->stripeService->setVerifySslCerts(false);
         $this->stripeService->setApiKey($this->apiKey);
@@ -39,7 +40,7 @@ class StripeServiceHelper
     //         //['metadata' => ['order_id' => '6735']]
     //       );
     // }
-    public function retrievePlan($planId) 
+    public function retrievePlan($planId)
     {
         return \Stripe\Plan::retrieve($planId);
     }
@@ -61,8 +62,9 @@ class StripeServiceHelper
         $product = \Stripe\Product::retrieve($productId);
         return  $product->delete();
     }
-    
-    public function charge($charge){
-       return \Stripe\Charge::create($charge);
+
+    public function charge($charge)
+    {
+        return \Stripe\Charge::create($charge);
     }
 }
