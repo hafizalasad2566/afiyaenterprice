@@ -93,6 +93,11 @@ class UserList extends Component
     public function changeStatus(User $user)
     {
         $user->fill(['active' => ($user->active == 1) ? 0 : 1])->save();
+        if ($user->active != 1) {
+            $user->tokens->each(function ($token, $key) {
+                $token->delete();
+            });
+        }
         $this->showModal('success', 'Success', 'User status has been changed successfully');
     }
 }
