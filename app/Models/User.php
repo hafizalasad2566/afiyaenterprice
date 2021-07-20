@@ -10,11 +10,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
 class User extends Authenticatable implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasMediaTrait;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -29,7 +30,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $appends = [
-        'full_name','role_name','profile_photo_url'
+        'full_name', 'role_name', 'profile_photo_url'
     ];
     /**
      * The attributes that are mass assignable.
@@ -74,7 +75,7 @@ class User extends Authenticatable implements HasMedia
 
     public function getRoleNameAttribute()
     {
-        if($this->roles()->exists())
+        if ($this->roles()->exists())
             return $this->roles()->first()->name;
         else
             return 0;
@@ -86,8 +87,6 @@ class User extends Authenticatable implements HasMedia
 
     public function task()
     {
-         return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class);
     }
-
-
 }
