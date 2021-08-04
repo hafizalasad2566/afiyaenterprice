@@ -81,7 +81,7 @@
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('admin_assets/media/logos/favicon.ico')}}" />
     <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 
 <!-- end::Head -->

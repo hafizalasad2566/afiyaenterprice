@@ -41,7 +41,6 @@
                         </x-admin.dropdown>
                         <x-admin.input-error for="active" />
                     </x-admin.form-group>
-
                     <x-admin.form-group class="col-lg-6" >
                     <x-admin.lable value="Profile Image" />
                     @if($model_image)
@@ -56,8 +55,7 @@
                     maxFileSize="4mb"/>
                     <x-admin.input-error for="photo" />
                     </x-admin.form-group>
-
-                    <x-admin.form-group class="col-lg-12" >
+                    <x-admin.form-group class="col-lg-12">
                     <x-admin.lable value="Documents" /><br/>
                     @foreach($model_documents as $documents)
                     <a href="{{ $documents->getUrl() }}">{{ $documents->name }}</a>
@@ -68,7 +66,7 @@
                     allowImagePreview
                     imagePreviewMaxHeight="50"
                     allowFileTypeValidation
-                    acceptedFileTypes="[ 'application/pdf']"
+                    acceptedFileTypes="['image/png', 'image/jpg', 'image/jpeg', 'application/pdf']"
                     allowFileSizeValidation
                     maxFileSize="4mb"/>
                     </x-admin.form-group>
@@ -81,7 +79,7 @@
                     })" wire:model.defer="address" id="address" class="form-control {{ $errors->has('address') ? 'is-invalid' :'' }}"></textarea>
                     </x-admin.form-group>
                     </div>
-            <br>
+                    <br/>
     </x-slot>
     <x-slot name="actions">
         <x-admin.button type="submit" color="success" wire:loading.attr="disabled">Save</x-admin.button>

@@ -14,13 +14,10 @@ class UserCreateEdit extends Component
 {
     use WithFileUploads;
     use AlertMessage;
-    public $first_name,$last_name, $email, $password,$phone,$active,$password_confirmation,$user,$model_id;
-    public $address;
+    public $first_name,$last_name, $email, $password,$phone,$active,$password_confirmation,$user,$model_id,$model_image,$imgId,$model_documents,$photo,$address;
     public $isEdit=false;
     public $statusList=[];
-    public $photo;
     public $photos = [];
-    public $model_image,$imgId,$model_documents;
     protected $listeners = ['refreshProducts' => '$refresh'];
 
     public function mount($user = null)
