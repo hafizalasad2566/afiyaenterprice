@@ -130,6 +130,6 @@
         {{ $users->links() }}
     </x-slot>
     <x-slot name="showingEntries">
-        Showing {{ $users->firstitem() }} to {{ $users->lastitem() }} of {{ $users->total() }} entries
+        Showing {{ $users->firstitem() ?? 0 }} to {{ $users->lastitem() ?? 0 }} of {{ $users->total() }} entries
     </x-slot>
 </x-admin.table>

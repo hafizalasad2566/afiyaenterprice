@@ -23,6 +23,9 @@
         });
     </script>
     <style>
+        .form-control.is-invalid {
+            background-image: none !important;
+        }
         .is-invalid {
             border-color: #fd397a !important;
         }
