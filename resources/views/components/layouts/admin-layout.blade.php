@@ -351,6 +351,7 @@
 
         })
     </script>
+    @stack('scripts')
     <!--end::Global App Bundle -->
 </body>
 
