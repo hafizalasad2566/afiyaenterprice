@@ -22,7 +22,7 @@
     <x-slot name="thead">
         <tr role="row">
             <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 5%;"
-                aria-sort="ascending" aria-label="Agent: activate to sort column descending">Select
+                aria-sort="ascending" aria-label="Agent: activate to sort column descending">
             </th>
             <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 22%;"
                 aria-sort="ascending" aria-label="Agent: activate to sort column descending">Name <i
@@ -119,7 +119,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5" class="align-center">No records available</td>
+                <td colspan="6" class="align-center">No records available</td>
             </tr>
         @endforelse
 

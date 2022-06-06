@@ -69,11 +69,11 @@ class UserList extends Component
                 "concat(first_name,' ', last_name) like '%" . trim($this->searchName) . "%' "
             );
         if ($this->searchEmail)
-            $userQuery->orWhere('email', 'like', '%' . trim($this->searchEmail) . '%');
+            $userQuery->where('email', 'like', '%' . trim($this->searchEmail) . '%');
         if ($this->searchPhone)
-            $userQuery->orWhere('phone', 'like', '%' . trim($this->searchPhone) . '%');
+            $userQuery->where('phone', 'like', '%' . trim($this->searchPhone) . '%');
         if ($this->searchStatus >= 0)
-            $userQuery->orWhere('active', $this->searchStatus);
+            $userQuery->where('active', $this->searchStatus);
 
         if($this->status){
             if($this->status == "active"){
