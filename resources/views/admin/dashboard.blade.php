@@ -23,7 +23,7 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-brand">
-                            {{$count['userCount']}}
+                            <a href="{{ route('users.index') }}">{{$count['userCount']}}</a>
                         </span>
                     </div>
                     <div class="progress progress--sm">
@@ -48,14 +48,14 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-warning">
-                            {{$count['blockedUserCount']}}
+                            <a href="{{route('users.index', ['status' => 'inactive'])}}">{{$count['blockedUserCount']}}</a>
                         </span>
                     </div>
                     <div class="progress progress--sm">
                         <div class="progress-bar kt-bg-warning" role="progressbar" style="width: {{$count['blockedUserCount']}}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="kt-widget24__action">
-                        <a class="kt-widget24__change" href="{{ route('users.index') }}">
+                        <a class="kt-widget24__change" href="{{route('users.index', ['status' => 'inactive'])}}">
                             View
                         </a>
                     </div>
@@ -73,14 +73,14 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-danger">
-                            {{$count['activeUserCount']}}
+                            <a href="{{route('users.index', ['status' => 'active'])}}">{{$count['activeUserCount']}}</a>
                         </span>
                     </div>
                     <div class="progress progress--sm">
                         <div class="progress-bar kt-bg-danger" role="progressbar" style="width: {{$count['activeUserCount']}}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="kt-widget24__action">
-                        <a class="kt-widget24__change" href="{{ route('users.index') }}">
+                        <a class="kt-widget24__change" href="{{route('users.index', ['status' => 'active'])}}">
                             View
                         </a>
                     </div>
@@ -98,7 +98,7 @@
                             </span>
                         </div>
                         <span class="kt-widget24__stats kt-font-success">
-                            10
+                            <a href='#'>10</a>
                         </span>
                     </div>
                     <div class="progress progress--sm">

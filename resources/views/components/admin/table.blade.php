@@ -21,6 +21,7 @@
                         {{-- <label>Search:
                             {{ $search }}
                         </label> --}}
+                        {{ $search }}
                     </div>
                 </div>
             </div>

@@ -1,8 +1,14 @@
 <x-admin.table>
-    {{-- <x-slot name="search">
-        <x-admin.input type="search" class="form-control form-control-sm" wire:model.debounce.500ms="search"
-            aria-controls="kt_table_1" id="generalSearch" />
-    </x-slot> --}}
+     <x-slot name="search">
+       {{-- <x-admin.input type="search" class="form-control form-control-sm" wire:model.debounce.500ms="search"
+            aria-controls="kt_table_1" id="generalSearch" />--}}
+        
+        @if($bulkDelIds)
+        <button class="btn btn-primary btn-del" wire:click="bulkDeleteAttempt()" >Delete Selected</button>
+        @endif
+        <button class="btn btn-primary" wire:click="exportUsers()" >Export</button>
+
+    </x-slot> 
     <x-slot name="perPage">
         <label>Show
             <x-admin.dropdown wire:model="perPage" class="custom-select custom-select-sm form-control form-control-sm">
@@ -15,6 +21,9 @@
 
     <x-slot name="thead">
         <tr role="row">
+            <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 5%;"
+                aria-sort="ascending" aria-label="Agent: activate to sort column descending">Select
+            </th>
             <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 22%;"
                 aria-sort="ascending" aria-label="Agent: activate to sort column descending">Name <i
                     class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('first_name')"></i>
@@ -31,6 +40,9 @@
         </tr>
 
         <tr class="filter">
+            <th>
+                <input type="checkbox" wire:model="selectAll">
+            </th>
             <th>
                 <x-admin.input type="search" wire:model.defer="searchName" placeholder="" autocomplete="off"
                     class="form-control-sm form-filter" />
@@ -77,6 +89,7 @@
     <x-slot name="tbody">
         @forelse($users as $user)
             <tr role="row" class="odd">
+                <td><input type="checkbox" wire:model="bulkDelIds" value="{{$user->id}}"></td>
                 <td class="sorting_1" tabindex="0">
                     <div class="kt-user-card-v2">
                         <div class="kt-user-card-v2__pic">

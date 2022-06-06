@@ -7,6 +7,9 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Http\Livewire\Traits\WithSorting;
+use App\Exports\UsersExport;
+use Excel;
+
 
 class UserList extends Component
 {
@@ -14,13 +17,15 @@ class UserList extends Component
     use WithSorting;
     use AlertMessage;
     public $perPageList = [];
+    public $bulkDelIds = [];
+    public $selectAll = false;
     public $badgeColors = ['info', 'success', 'brand', 'dark', 'primary', 'warning'];
 
 
     protected $paginationTheme = 'bootstrap';
 
-    public $searchName, $searchEmail, $searchPhone, $searchStatus = -1, $perPage = 5;
-    protected $listeners = ['deleteConfirm', 'changeStatus'];
+    public $searchName, $searchEmail, $searchPhone, $searchStatus = -1, $perPage = 5, $status;
+    protected $listeners = ['deleteConfirm', 'changeStatus', 'deleteSelected'];
 
     public function mount()
     {
@@ -31,6 +36,7 @@ class UserList extends Component
             ['value' => 50, 'text' => "50"],
             ['value' => 100, 'text' => "100"]
         ];
+        $this->status = request('status');
     }
     public function getRandomColor()
     {
@@ -68,6 +74,18 @@ class UserList extends Component
             $userQuery->orWhere('phone', 'like', '%' . trim($this->searchPhone) . '%');
         if ($this->searchStatus >= 0)
             $userQuery->orWhere('active', $this->searchStatus);
+
+        if($this->status){
+            if($this->status == "active"){
+                $userQuery->where('active',1);
+            }
+            else if($this->status == "inactive"){
+                $userQuery->where('active',0);
+            }
+            else{
+                $userQuery->where('active',2);
+            }
+        }
         return view('livewire.admin.user-list', [
             'users' => $userQuery
                 ->orderBy($this->sortBy, $this->sortDirection)
@@ -85,6 +103,32 @@ class UserList extends Component
         $this->showConfirmation("warning", 'Are you sure?', "You won't be able to recover this user!", 'Yes, delete!', 'deleteConfirm', ['id' => $id]); //($type,$title,$text,$confirmText,$method)
     }
 
+    public function updatedSelectAll($value)
+    {
+        if ($value) {
+            $this->bulkDelIds = User::role('CLIENT')->pluck('id');
+        } else {
+            $this->bulkDelIds = [];
+        }
+        
+    }
+
+    public function deleteSelected()
+    {
+        // dd($this->bulkDelIds);
+        User::query()->whereIn('id', $this->bulkDelIds)->delete();
+        $this->bulkDelIds = [];
+        $this->selectAll = false;
+        $this->showModal('success', 'Success', 'Users have been deleted successfully');
+    }
+    
+    public function bulkDeleteAttempt()
+    {
+        $this->showConfirmation("warning", 'Are you sure?', "You won't be able to recover this data !", 'Yes, delete!', 'deleteSelected', []); //($type,$title,$text,$confirmText,$method)
+    }
+
+
+
     public function changeStatusConfirm($id)
     {
         $this->showConfirmation("warning", 'Are you sure?', "Do you want to change this status?", 'Yes, Change!', 'changeStatus', ['id' => $id]); //($type,$title,$text,$confirmText,$method)
@@ -100,4 +144,11 @@ class UserList extends Component
         }
         $this->showModal('success', 'Success', 'User status has been changed successfully');
     }
+
+
+    public function exportUsers()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
 }
