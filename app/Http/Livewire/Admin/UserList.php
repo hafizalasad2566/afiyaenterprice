@@ -60,12 +60,12 @@ class UserList extends Component
         $userQuery = User::query();
         if ($this->searchName)
             $userQuery->WhereRaw(
-                "concat(first_name,' ', last_name) like '%" . $this->searchName . "%' "
+                "concat(first_name,' ', last_name) like '%" . trim($this->searchName) . "%' "
             );
         if ($this->searchEmail)
-            $userQuery->orWhere('email', 'like', '%' . $this->searchEmail . '%');
+            $userQuery->orWhere('email', 'like', '%' . trim($this->searchEmail) . '%');
         if ($this->searchPhone)
-            $userQuery->orWhere('phone', 'like', '%' . $this->searchPhone . '%');
+            $userQuery->orWhere('phone', 'like', '%' . trim($this->searchPhone) . '%');
         if ($this->searchStatus >= 0)
             $userQuery->orWhere('active', $this->searchStatus);
         return view('livewire.admin.user-list', [

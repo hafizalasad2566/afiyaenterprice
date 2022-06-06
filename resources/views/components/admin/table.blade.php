@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row table-responsive">
                 <div class="col-sm-12">
                     <table
                         class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline"
