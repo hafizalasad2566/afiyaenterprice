@@ -46,6 +46,11 @@
 									<h4 class="kt-menu__section-text">Master</h4>
 									<i class="kt-menu__section-icon flaticon-more-v2"></i>
 								</li> --}}
+								<li class="kt-menu__section ">
+									<h4 class="kt-menu__section-text">Content Management</h4>
+									<i class="kt-menu__section-icon flaticon-more-v2"></i>
+								</li>
+                                <li class="kt-menu__item  {{ Request::is('admin/cms*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('cms.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-imac"></i><span class="kt-menu__link-text">CMS</span></a></li>
 							</ul>
 						</div>
 					</div>

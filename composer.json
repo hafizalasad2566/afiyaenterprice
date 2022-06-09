@@ -20,7 +20,8 @@
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-permission": "^3.18",
         "stripe/stripe-php": "^7.77",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "laravelcollective/html": "^6.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

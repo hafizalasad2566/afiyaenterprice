@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07b786f4ed349932be905fdad21cb465",
+    "content-hash": "15ad879cd3fe56196ae366d120673972",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1054,16 +1054,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "c94a94f120803a18554c1805ef2e539f8285f9a2"
+                "reference": "83260bb50b8fc753c72d14dc1621a2dac31877ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c94a94f120803a18554c1805ef2e539f8285f9a2",
-                "reference": "c94a94f120803a18554c1805ef2e539f8285f9a2",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/83260bb50b8fc753c72d14dc1621a2dac31877ee",
+                "reference": "83260bb50b8fc753c72d14dc1621a2dac31877ee",
                 "shasum": ""
             },
             "require": {
@@ -1087,7 +1087,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -1149,7 +1149,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.2.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.3.0"
             },
             "funding": [
                 {
@@ -1165,7 +1165,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-20T21:55:58+00:00"
+            "time": "2022-06-09T08:26:02+00:00"
         },
         {
             "name": "intervention/image",
@@ -1451,16 +1451,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.83.15",
+            "version": "v8.83.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bf8fbdd9061611b2c05562fa14f6987cc5145d78"
+                "reference": "6be5abd144faf517879af7298e9d79f06f250f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bf8fbdd9061611b2c05562fa14f6987cc5145d78",
-                "reference": "bf8fbdd9061611b2c05562fa14f6987cc5145d78",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6be5abd144faf517879af7298e9d79f06f250f75",
+                "reference": "6be5abd144faf517879af7298e9d79f06f250f75",
                 "shasum": ""
             },
             "require": {
@@ -1620,20 +1620,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-05-31T14:57:02+00:00"
+            "time": "2022-06-07T15:09:06+00:00"
         },
         {
             "name": "laravel/jetstream",
-            "version": "v2.8.3",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "a643cbbc6fad2101ad6f3dbea5f9213b69bfaf44"
+                "reference": "fae6651963e92cbf532ead945b632420cb9bd861"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/a643cbbc6fad2101ad6f3dbea5f9213b69bfaf44",
-                "reference": "a643cbbc6fad2101ad6f3dbea5f9213b69bfaf44",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/fae6651963e92cbf532ead945b632420cb9bd861",
+                "reference": "fae6651963e92cbf532ead945b632420cb9bd861",
                 "shasum": ""
             },
             "require": {
@@ -1686,7 +1686,7 @@
                 "issues": "https://github.com/laravel/jetstream/issues",
                 "source": "https://github.com/laravel/jetstream"
             },
-            "time": "2022-05-30T13:18:11+00:00"
+            "time": "2022-06-01T13:43:04+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1881,17 +1881,89 @@
             "time": "2022-03-23T12:38:24+00:00"
         },
         {
-            "name": "league/commonmark",
-            "version": "2.3.2",
+            "name": "laravelcollective/html",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "6eddb90a9e4a1a8c5773226068fcfb48cb36812a"
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "78c3cb516ac9e6d3d76cad9191f81d217302dea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/6eddb90a9e4a1a8c5773226068fcfb48cb36812a",
-                "reference": "6eddb90a9e4a1a8c5773226068fcfb48cb36812a",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/78c3cb516ac9e6d3d76cad9191f81d217302dea6",
+                "reference": "78c3cb516ac9e6d3d76cad9191f81d217302dea6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/session": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/view": "^6.0|^7.0|^8.0|^9.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5|^9.5.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "time": "2022-02-08T21:02:54+00:00"
+        },
+        {
+            "name": "league/commonmark",
+            "version": "2.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "0da1dca5781dd3cfddbe328224d9a7a62571addc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/0da1dca5781dd3cfddbe328224d9a7a62571addc",
+                "reference": "0da1dca5781dd3cfddbe328224d9a7a62571addc",
                 "shasum": ""
             },
             "require": {
@@ -1984,7 +2056,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-03T14:07:39+00:00"
+            "time": "2022-06-07T21:28:26+00:00"
         },
         {
             "name": "league/config",
@@ -2677,16 +2749,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "247918972acd74356b0a91dfaa5adcaec069b6c0"
+                "reference": "5579edf28aee1190a798bfa5be8bc16c563bd524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/247918972acd74356b0a91dfaa5adcaec069b6c0",
-                "reference": "247918972acd74356b0a91dfaa5adcaec069b6c0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5579edf28aee1190a798bfa5be8bc16c563bd524",
+                "reference": "5579edf28aee1190a798bfa5be8bc16c563bd524",
                 "shasum": ""
             },
             "require": {
@@ -2765,7 +2837,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.6.0"
+                "source": "https://github.com/Seldaek/monolog/tree/2.7.0"
             },
             "funding": [
                 {
@@ -2777,7 +2849,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-10T09:36:00+00:00"
+            "time": "2022-06-09T08:59:12+00:00"
         },
         {
             "name": "myclabs/php-enum",
@@ -7954,16 +8026,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.14.8",
+            "version": "v1.14.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "04b425968c6a76940bddd2cfa40bf9e9ce78eee8"
+                "reference": "0ea5d683af4d189071efcdb9e83946c10dab82c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/04b425968c6a76940bddd2cfa40bf9e9ce78eee8",
-                "reference": "04b425968c6a76940bddd2cfa40bf9e9ce78eee8",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/0ea5d683af4d189071efcdb9e83946c10dab82c3",
+                "reference": "0ea5d683af4d189071efcdb9e83946c10dab82c3",
                 "shasum": ""
             },
             "require": {
@@ -8010,7 +8082,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-05-31T14:48:21+00:00"
+            "time": "2022-06-09T07:10:28+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -10411,6 +10483,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "symfony/error-handler",
             "time": "2022-04-12T15:19:55+00:00"
         },
         {
