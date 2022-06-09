@@ -192158,3 +192158,17 @@ select {
   }
 }
 
+
+
+table tr th button.kt-btn--icon{
+  height: 50px;
+  width: 66px;
+  margin: 0 7px;
+  margin-top: 0!important;
+}
+
+@media only screen and (max-width: 1020px){
+  table tr th button.kt-btn--icon{
+  margin-top: 7px!important;
+  }
+}
