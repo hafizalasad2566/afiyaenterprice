@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="shortcut icon" href="{{asset('admin_assets/media/logos/favicon.ico')}}" />
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
