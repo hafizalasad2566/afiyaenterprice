@@ -49,12 +49,12 @@ class UserCreateEdit extends Component
             [
                 'first_name' => ['required', 'max:255'],
                 'last_name' => ['required', 'max:255'],
-                'email' => ['required', 'email', 'max:255', Rule::unique('users')],
                 'phone' => ['required', Rule::unique('users')],
-                'password' => ['required', 'max:255', 'min:6', 'confirmed'],
-                'password_confirmation' => ['required', 'max:255', 'min:6'],
-                'active' => ['required'],
-                'photo' => ['required'],
+                // 'email' => ['required', 'email', 'max:255', Rule::unique('users')],
+                // 'password' => ['required', 'max:255', 'min:6', 'confirmed'],
+                // 'password_confirmation' => ['required', 'max:255', 'min:6'],
+                // 'active' => ['required'],
+                // 'photo' => ['required'],
                 'address' => ['nullable'],
 
             ];
@@ -65,8 +65,8 @@ class UserCreateEdit extends Component
             [
                 'first_name' => ['required', 'max:255'],
                 'last_name' => ['required', 'max:255'],
-                'active' => ['required'],
-                'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
+                // 'active' => ['required'],
+                // 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
                 'phone' => ['required', Rule::unique('users')->ignore($this->user->id)],
                 'address' => ['nullable'],
             ];
@@ -98,7 +98,7 @@ class UserCreateEdit extends Component
         }
         if (!$this->isEdit)
             $this->user->assignRole('CLIENT');
-        $msgAction = 'User was ' . ($this->isEdit ? 'updated' : 'added') . ' successfully';
+        $msgAction = 'User ' . ($this->isEdit ? 'updated' : 'added') . ' successfully';
         $this->showToastr("success", $msgAction);
 
         return redirect()->route('users.index');

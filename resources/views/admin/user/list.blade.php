@@ -2,8 +2,6 @@
     <x-slot name="subHeader">
             <x-admin.sub-header headerTitle="User List">
 				<x-admin.breadcrumbs>
-						<x-admin.breadcrumbs-item href="{{ route('admin.dashboard') }}" value="Dashboard" />
-						<x-admin.breadcrumbs-separator />
 						<x-admin.breadcrumbs-item href="{{ route('users.index') }}" value="User List" />
 				</x-admin.breadcrumbs>
 

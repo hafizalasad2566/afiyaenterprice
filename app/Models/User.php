@@ -44,7 +44,8 @@ class User extends Authenticatable implements HasMedia
         'phone',
         'password',
         'active',
-        'address'
+        'address',
+        'total_amount',
     ];
 
     /**
@@ -88,5 +89,10 @@ class User extends Authenticatable implements HasMedia
     public function task()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }

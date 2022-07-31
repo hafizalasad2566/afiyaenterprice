@@ -40,17 +40,14 @@
 					<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 						<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item  {{ Request::is('admin/dashboard*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('admin.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-home"></i><span class="kt-menu__link-text">Dashboard</span></a></li>
-								<li class="kt-menu__item  {{ Request::is('admin/users*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('users.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-users"></i><span class="kt-menu__link-text">Users</span></a></li>
-								{{-- <li class="kt-menu__section ">
+								{{-- <li class="kt-menu__item  {{ Request::is('admin/dashboard*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('admin.dashboard')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-home"></i><span class="kt-menu__link-text">Dashboard</span></a></li>
+								<li class="kt-menu__section ">
 									<h4 class="kt-menu__section-text">Master</h4>
 									<i class="kt-menu__section-icon flaticon-more-v2"></i>
 								</li> --}}
-								<li class="kt-menu__section ">
-									<h4 class="kt-menu__section-text">Content Management</h4>
-									<i class="kt-menu__section-icon flaticon-more-v2"></i>
-								</li>
-                                <li class="kt-menu__item  {{ Request::is('admin/cms*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('cms.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-imac"></i><span class="kt-menu__link-text">CMS</span></a></li>
+								<li class="kt-menu__item  {{ Request::is('admin/users*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('users.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-users"></i><span class="kt-menu__link-text">Users</span></a></li>
+								<li class="kt-menu__item  {{ Request::is('admin/transactions*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('transactions.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-list"></i><span class="kt-menu__link-text">Transactions</span></a></li>
+								<li class="kt-menu__item  {{ Request::is('admin/download-bill*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{route('user.download.bill')}}" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-file"></i><span class="kt-menu__link-text">Download Bill</span></a></li>
 							</ul>
 						</div>
 					</div>

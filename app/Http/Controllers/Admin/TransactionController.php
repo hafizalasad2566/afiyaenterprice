@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Transaction;
 
-class UserController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.list');
+        return view('admin.transaction.list', ['user_id'=>null]);
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create-edit',['user'=>null]);
+        return view('admin.transaction.create-edit',['transaction'=>null]);
     }
 
     /**
@@ -56,9 +56,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Transaction $transaction)
     {
-        return view('admin.user.create-edit',compact('user'));
+        return view('admin.transaction.create-edit',compact('transaction'));
     }
 
     /**
@@ -84,13 +84,13 @@ class UserController extends Controller
         //
     }
 
-    public function download_bill(Request $request)
+    public function userTransaction($user)
     {
-        $file= public_path(). "/storage/download/test.xlsx";
-        $headers = [
-            'Content-Type' => 'application/xlsx',
-         ];
+        return view('admin.transaction.create-edit',['transaction'=>null, 'user_id'=>$user]);
+    }
 
-        return response()->download($file, 'test.xlsx', $headers);
+    public function userTransactionList($user)
+    {
+        return view('admin.transaction.list', ['user_id'=>$user]);
     }
 }

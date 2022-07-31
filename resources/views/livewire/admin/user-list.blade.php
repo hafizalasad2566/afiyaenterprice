@@ -25,17 +25,13 @@
                 aria-sort="ascending" aria-label="Agent: activate to sort column descending">
             </th>
             <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 22%;"
-                aria-sort="ascending" aria-label="Agent: activate to sort column descending">Name <i
-                    class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('first_name')"></i>
+                aria-sort="ascending" aria-label="Agent: activate to sort column descending">Name
             </th>
-            <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 23%;"
-                aria-label="Company Email: activate to sort column ascending">Email <i
-                    class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('email')"></i></th>
             <th tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 20%;"
-                aria-label="Company Agent: activate to sort column ascending">Phone <i
-                    class="fa fa-fw fa-sort pull-right" style="cursor: pointer;" wire:click="sortBy('phone')"></i></th>
-            <th class="align-center" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 15%;"
-                aria-label="Status: activate to sort column ascending">Status</th>
+                aria-label="Company Agent: activate to sort column ascending">Phone
+            </th>
+            {{-- <th class="align-center" tabindex="0" aria-controls="kt_table_1" rowspan="1" colspan="1" style="width: 15%;"
+                aria-label="Status: activate to sort column ascending">Status</th> --}}
             <th class="align-center" rowspan="1" colspan="1" style="width: 20%;" aria-label="Actions">Actions</th>
         </tr>
 
@@ -48,21 +44,17 @@
                     class="form-control-sm form-filter" />
             </th>
             <th>
-                <x-admin.input type="search" wire:model.defer="searchEmail" placeholder="" autocomplete="off"
-                    class="form-control-sm form-filter" />
-            </th>
-            <th>
                 <x-admin.input type="search" wire:model.defer="searchPhone" placeholder="" autocomplete="off"
                     class="form-control-sm form-filter" />
             </th>
-            <th>
+            {{-- <th>
                 <select class="form-control form-control-sm form-filter kt-input" wire:model.defer="searchStatus"
                     title="Select" data-col-index="2">
                     <option value="-1">Select One</option>
                     <option value="1">Active</option>
                     <option value="0">Inactive</option>
                 </select>
-            </th>
+            </th> --}}
             <th>
                 <div class="row justify-content-center align-items-center">
                     {{-- <div class="col-md-6"> --}}
@@ -104,15 +96,18 @@
                         </div>
                     </div>
                 </td>
-                <td><a class="kt-link" href="mailto:adingate15@furl.net">{{ $user->email }}</a></td>
                 <td>{{ $user->phone }}</td>
-                <td class="align-center"><span
+                {{-- <td class="align-center"><span
                         class="kt-badge  kt-badge--{{ $user->active == 1 ? 'success' : 'warning' }} kt-badge--inline kt-badge--pill cursor-pointer"
                         wire:click="changeStatusConfirm({{ $user->id }})">{{ $user->active == 1 ? 'Active' : 'Inactive' }}</span>
-                </td>
+                </td> --}}
                 <x-admin.td-action>
                     <a class="dropdown-item" href="{{ route('users.edit', ['user' => $user->id]) }}"><i
                             class="la la-edit"></i> Edit</a>
+                    <a class="dropdown-item" href="{{ route('user.transaction', ['user' => $user->id]) }}"><i
+                            class="la la-money"></i>Create Transaction</a>
+                    <a class="dropdown-item" href="{{ route('user.transaction.list', ['user' => $user->id]) }}"><i
+                            class="la la-list"></i> Transactions List</a>
                     <button href="#" class="dropdown-item" wire:click="deleteAttempt({{ $user->id }})"><i
                             class="fa fa-trash"></i> Delete</button>
                 </x-admin.td-action>
@@ -122,22 +117,6 @@
                 <td colspan="6" class="align-center">No records available</td>
             </tr>
         @endforelse
-
-        {{-- <tr>
-                    <td>{{$user->full_name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td class="align-center"><span class="kt-badge kt-badge--{{$user->active==1 ? 'success' : 'warning'}} kt-badge--inline cursor-pointer" wire:click="changeStatusConfirm({{$user->id}})">{{$user->active==1 ? 'Active' : 'Inactive'}}</span></td>
-                    <x-admin.td-action>
-                        <a class="dropdown-item" href="{{route('users.edit', ['user' => $user->id])}}" ><i class="la la-edit"></i> Edit</a>
-                        <button href="#" class="dropdown-item" wire:click="deleteAttempt({{ $user->id }})"><i class="fa fa-trash" ></i> Delete</button>
-                    </x-admin.td-action>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="align-center">No records available</td>
-                </tr>
-                @endforelse --}}
     </x-slot>
     <x-slot name="pagination">
         {{ $users->links() }}

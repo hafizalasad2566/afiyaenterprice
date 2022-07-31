@@ -7,10 +7,11 @@
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
             <ul class="kt-menu__nav ">
                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel kt-menu__item--active" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">{{$title}}</span></a>
-                </li>  
+                </li>
             </ul>
         </div>
     </div>
+    <h3 style="font-size: 25px; margin-top: 15px; text-align: center;">Total Amount : {{number_format(Auth::user()->total_amount)}}</h3>
     
     <!-- end:: Header Menu -->
     
